@@ -1,6 +1,20 @@
 import streamlit as st
 import pandas as pd
 import os
+import gspread
+from oauth2client.service_account import ServiceAccountCredentials
+
+# Google Sheets
+def connect_to_gsheets():
+    scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
+    creds = ServiceAccountCredentials.from_json_keyfile_name("credentials.json", scope)
+    client = gspread.authorize(creds)
+    sheet = client.open("Disponibilidades Cronograma").sheet1  # Abre a planilha
+    return sheet
+
+# add line
+def append_data_to_sheet(sheet, data):
+    sheet.append_row(data)
 
 # function to translate
 def translate(language, en_text, fr_text):
@@ -37,29 +51,16 @@ friday = st.multiselect(translate(language, 'Friday', 'Vendredi'),
                         ['08:00-09:00', '09:00-10:00', '10:00-11:00', '11:00-12:00', '12:00-13:00', '13:00-14:00', '14:00-15:00', '15:00-16:00', '16:00-17:00'])
 
 if st.button(translate(language, 'Submit Availability', 'Envoyer la Disponibilité')):
-    # DataFrame 
-    new_entry = pd.DataFrame({
-        'Name': [name],
-        'Student Number': [studentNumber],
-        'Monday': [', '.join(monday)],
-        'Tuesday': [', '.join(tuesday)],
-        'Wednesday': [', '.join(wednesday)],
-        'Thursday': [', '.join(thursday)],
-        'Friday': [', '.join(friday)]
-    })
+    # conect to Google Sheets
+    sheet = connect_to_gsheets()
 
-    # csv file
-    file_exists = os.path.isfile('availability_data.csv')
+    # data for Google Sheets
+    data = [name, studentNumber, ', '.join(monday), ', '.join(tuesday), ', '.join(wednesday), ', '.join(thursday), ', '.join(friday)]
 
-    # create or add info
-    if file_exists:
-        df = pd.read_csv('availability_data.csv')
-        df = pd.concat([df, new_entry], ignore_index=True)
-    else:
-        df = new_entry
+    # add data to Google Sheets
+    append_data_to_sheet(sheet, data)
 
-    # save file
-    df.to_csv('availability_data.csv', index=False)
+    st.success(translate(language, 'Availability submitted!', 'Disponibilité envoyée!'))
 
     st.success(translate(language, 'Availability submitted!', 'Disponibilité envoyée!'))
 
