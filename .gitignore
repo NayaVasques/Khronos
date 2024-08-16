@@ -159,6 +159,7 @@ cython_debug/
 # Ignore the credentials.json file
 credentials.json
 
+
 # Ignore other sensitive or unnecessary files
 .env
 __pycache__/
