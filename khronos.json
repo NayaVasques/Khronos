@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "khronos-432715",
+  "private_key_id": "62ba6bdcde7f18b7fde64e81ab89c7c5204bb5f8",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCbeCp+tQAPk5RV\nbVe04EwmODwaid09wr1fB8tlDa/AMu3+t04kZwO5MGQixyYXtGB22HWysr25KSlO\nO/jhZ+cGSHDt3JYVQYu7EH0pzcdosUVOB6f6kfCV8CqPcUoEPuMqV0bVQ+jSBAh5\noqzpjPZ9D1uTRKjLQxB+qEoipjIg+AkvEZOjRls5qBS3hE34EdGfm+ogP09uoShE\n/yXkvzBGFOT9kg8UIaWNW/HyZ13/52LvZ4sxYKMduLVBHke4LTKuQFvpA0u1oS4R\nQ/LUUCv1JUW6kZlWhdEvMnaOQ8g6PYCnQmAezELW8YJR0fWvXctMJzrb75tyrd0v\nAooLOsf5AgMBAAECggEAAY15KyvGlOE97X56jkFhMU6FdyRiU8ASoRTUWK2C0FIR\n42XUP3PR6zMLBPflLv5rqjQuNLspPuSk13Ws3h9qBLuLeSynSQ4PBa67+UNnVunS\nTd2wtUVo2C5+VlFk0lcIcL9PY0ja1eIZbZGM1YZFXeld2kIox2Ljksg+eUscnAyq\nGIgOmwvbaD8ZqTuAe9zuURJrVrTm0flSklHnxiKwlQaS3AkHc2WM0MEOpFk/Ws7k\n7NWvYFkuP9cbKG8qIRK1T1LPPXaE4qfYJKWF4280m9EHG86JnMr7G4KSQuIV9lfT\nx1g+ZA1Fv6N9IFuJwLOFwb0XwVGvpWtG9DQB3jmTCQKBgQDU/i9dztthc5v/RFR0\nruT9y8XddD9gS9n6MxH5t4UHa6PUYyxhDSoZLmrvMEpIXv7avzjvqdQXIMD+LMuI\nfz1yKwvZhaRn+Cuub4i3nZ4BhQMHHcpbC/L/f1osHvTN/ixnAdF82DVCubp9TUSL\nTrGnmYSmon8lh2z+fLmxG4URbQKBgQC63IiWAmQmIJfBncHatSmgyGacK5zFIx0E\nW6pATebDErRisxUcW3PY6jyKhSOngFiyiYOY+VkS7DSJsQsk003d1eJYbgaNOuyt\nyiYxpb4UInCAY2tbf1c1oFMyl9nkW9TRN+naXAngqYpsiLFba7ZTUISoyylJe88Z\nLeZAsViFPQKBgQDOeTYbnwqmNrdTxr6EeoK70U0Xd7h0NjOxys4zIIeSAPPJUPZV\ngrh7vrak9lAcRhKSpWqhUiWq4fKUs4H+6TH8ueP70wTkUPyvVanYLbBdUr7zqBph\nFn1S1vbn7H5uLmaG2IlmmAVRkNBK5Zt73CZ2DWk9TCsri1PKg8hS+xWNJQKBgBiL\n2cFi5QcBJw4/C/UP8Tz2tkvziq920lv9Mpsp4JNlhJ6mibJk7Q3kjzlfDfT17jDd\n0ZSpxKKwtqITyLP4sfTfINGe+mtY/zhBIs1IyXRZpc+nv7WQP8OCoQs3WV8fFRC6\nuJR/nKiPfOiO+EVbG+NL43FM5sqJYgYbunBrG4a9AoGAQ6oozJu2qrr4Vgrm8lQo\n4pRYQJacUmH97SLDgjzhrXr3hkDS066bSTv8HK1yRdQSCanumvafwDf7H7OZGlqc\nyRade0URMSfI7GRynFFqCOOepBmuGKd/Y/bDfbQ+VaqBUj5PT8R8Fspb/nQBPNPq\nnsmGRnTElC9HNscTi2fTBXE=\n-----END PRIVATE KEY-----\n",
+  "client_email": "kronos@khronos-432715.iam.gserviceaccount.com",
+  "client_id": "111500978476465560760",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/kronos%40khronos-432715.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
