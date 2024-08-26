@@ -25,7 +25,7 @@ def connect_to_gsheets():
     # Autenticação e conexão com Google Sheets
     creds = ServiceAccountCredentials.from_json_keyfile_dict(creds_dict, scope)
     client = gspread.authorize(creds)
-    sheet = client.open("khronos").sheet1  # Abre a planilha correta
+    sheet = client.open("chronos").sheet1  # Abre a planilha correta
     return sheet
 
 # Função para adicionar uma linha na planilha
