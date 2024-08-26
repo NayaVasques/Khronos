@@ -159,6 +159,7 @@ cython_debug/
 # Ignore the credentials.json file
 credentials.json
 khronos.json
+key2.json
 
 
 
