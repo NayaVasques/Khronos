@@ -40,7 +40,7 @@ def translate(language, en_text, fr_text):
         return fr_text
 
 # Título da Aplicação
-st.title('Chronos')
+st.title('CHRONOS')
 
 # Seleção de Idioma
 language = st.selectbox('Choose your language / Choisissez votre langue', ['English', 'Français'])
