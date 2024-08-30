@@ -157,12 +157,13 @@ dmypy.json
 cython_debug/
 
 # Ignore the credentials.json file
-
+key3.json
 
 
 
 # Ignore other sensitive or unnecessary files
 
+.env
 __pycache__/
 *.pyc
 
