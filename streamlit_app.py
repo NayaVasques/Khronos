@@ -3,9 +3,31 @@ import pandas as pd
 import os
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
+import requests
+
+def get_sheet_data():
+    api_key = os.getenv("GOOGLE_API_KEY")
+    sheet_id = "1Jwzm9Ce9_BMUrPeYrQZemlQ3lGJf0NEd0M8EXJU4NHM"
+    range_name = "Sheet1!AA9999:EE9999"  
+
+    url = f"https://sheets.googleapis.com/v4/spreadsheets/{sheet_id}/values/{range_name}?key={api_key}"
+    response = requests.get(url)
+
+    if response.status_code == 200:
+        return response.json().get("values", [])
+    else:
+        st.error(f"Erro ao acessar a API do Google Sheets: {response.status_code}")
+        return None
+
+# Pegar os dados da planilha
+data = get_sheet_data()
+
+# Exibir os dados na aplicação Streamlit
+if data:
+    st.write(data)
 
 
-# connect to Google Sheets
+"""# connect to Google Sheets
 def connect_to_gsheets():
     api_key = os.getenv("GOOGLE_API_KEY")
     client = gspread.Client(auth=api_key)
@@ -14,7 +36,7 @@ def connect_to_gsheets():
     return sheet
 
 # Substitua 'YOUR_API_KEY' pela sua API Key
-sheet = connect_to_gsheets()
+sheet = connect_to_gsheets()""" 
 
 # Função para adicionar uma linha na planilha
 def append_data_to_sheet(sheet, data):
