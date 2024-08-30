@@ -4,29 +4,17 @@ import os
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 
-# Função para conectar ao Google Sheets usando variáveis de ambiente
+
+# connect to Google Sheets
 def connect_to_gsheets():
-    scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
-    
-    # Obter as variáveis de ambiente
-    creds_dict = {
-        "type": os.getenv("GOOGLE_SHEETS_TYPE"),
-        "project_id": os.getenv("GOOGLE_SHEETS_PROJECT_ID"),
-        "private_key_id": os.getenv("GOOGLE_SHEETS_PRIVATE_KEY_ID"),
-        "private_key": os.getenv("GOOGLE_SHEETS_PRIVATE_KEY").replace('\\n', '\n'),
-        "client_email": os.getenv("GOOGLE_SHEETS_CLIENT_EMAIL"),
-        "client_id": os.getenv("GOOGLE_SHEETS_CLIENT_ID"),
-        "auth_uri": os.getenv("GOOGLE_SHEETS_AUTH_URI"),
-        "token_uri": os.getenv("GOOGLE_SHEETS_TOKEN_URI"),
-        "auth_provider_x509_cert_url": os.getenv("GOOGLE_SHEETS_AUTH_PROVIDER_X509_CERT_URL"),
-        "client_x509_cert_url": os.getenv("GOOGLE_SHEETS_CLIENT_X509_CERT_URL")
-    }
-    
-    # Autenticação e conexão com Google Sheets
-    creds = ServiceAccountCredentials.from_json_keyfile_dict(creds_dict, scope)
-    client = gspread.authorize(creds)
-    sheet = client.open("chronos").sheet1  # Abre a planilha correta
+    api_key = os.getenv("GOOGLE_API_KEY")
+    client = gspread.Client(auth=api_key)
+    client.session = gspread.httpsession.HTTPSession()
+    sheet = client.open_by_key("1Jwzm9Ce9_BMUrPeYrQZemlQ3lGJf0NEd0M8EXJU4NHM").sheet1 
     return sheet
+
+# Substitua 'YOUR_API_KEY' pela sua API Key
+sheet = connect_to_gsheets()
 
 # Função para adicionar uma linha na planilha
 def append_data_to_sheet(sheet, data):
