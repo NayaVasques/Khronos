@@ -2,19 +2,19 @@ import streamlit as st
 import pandas as pd
 import os
 import gspread
-from oauth2client.service_account import ServiceAccountCredentials
-import requests
+from google.oauth2.service_account import Credentials
 
 # connect to Google Sheets
 def connect_to_gsheets():
-    api_key = os.getenv("GOOGLE_API_KEY")
-    client = gspread.Client(auth=api_key)
-    client.session = gspread.httpsession.HTTPSession()
+    credentials = Credentials.from_service_account_info(
+        st.secrets["gcp_service_account"],
+        scopes=[
+            "https://www.googleapis.com/auth/spreadsheets",
+        ],
+    )
+    client = gspread.authorize(credentials)
     sheet = client.open_by_key("1Jwzm9Ce9_BMUrPeYrQZemlQ3lGJf0NEd0M8EXJU4NHM").sheet1 
     return sheet
-
-# Substitua 'YOUR_API_KEY' pela sua API Key
-sheet = connect_to_gsheets()
 
 # Função para adicionar uma linha na planilha
 def append_data_to_sheet(sheet, data):
@@ -59,13 +59,10 @@ if st.button(translate(language, 'Submit Availability', 'Envoyer la Disponibilit
     if not name or not studentNumber:
         st.error(translate(language, "Please provide your Name and Student Number.", "Veuillez fournir votre Nom et Numéro d'étudiant."))
     else:
-        # Conectar ao Google Sheets
-        sheet = connect_to_gsheets()
-
-        # Dados para o Google Sheets
-        data = [name, studentNumber, ', '.join(monday), ', '.join(tuesday), ', '.join(wednesday), ', '.join(thursday), ', '.join(friday)]
-
-        # Adicionar os dados ao Google Sheets
-        append_data_to_sheet(sheet, data)
-
-        st.success(translate(language, 'Availability submitted!', 'Disponibilité envoyée!'))
+        try:
+            sheet = connect_to_gsheets()
+            data = [name, studentNumber, ', '.join(monday), ', '.join(tuesday), ', '.join(wednesday), ', '.join(thursday), ', '.join(friday)]
+            sheet.append_row(data)
+            st.success(translate(language, 'Availability submitted!', 'Disponibilité envoyée!'))
+        except Exception as e:
+            st.error(f"An error occurred: {str(e)}")
